@@ -1,0 +1,57 @@
+<div class="max-w-7x1 mx-auto px-4">
+  <form [formGroup]="formPost" (ngSubmit)="onFormSubmit()">
+    <h1 class="text-3xl mt-8 mb-4 font-extrabold">Create Post</h1>
+
+    <div class="mt-4">
+      <label for="title" class="w-full">Title</label>
+      <input
+        formControlName="title"
+        type="text"
+        class="bg-neutral-50 w-full px-4 py-2 mt-2 placeholder-gray-500"
+        placeholder="Enter a title for your Post"
+        autocomplete="off"
+      />
+      @if (title.invalid && (title.dirty || title.touched)) {
+      <!--  -->
+      @if (title.hasError('required')) {
+      <span class="text-red-600">Title is required</span>
+      }
+      <!--  -->
+      @if (title.hasError('minlength')) {
+      <span class="text-red-600">title must to be at least 5 characters</span>
+      }
+      <!--  -->
+      @if (title.hasError('maxlength')) {
+      <span class="text-red-600">title must not exceed 100 characters</span>
+      } }
+    </div>
+
+    <div class="mt-4">
+      <label for="content" class="w-full">Title</label>
+      <textarea
+        formControlName="content"
+        class="bg-neutral-100 w-full px-4 py-2 mt-2 h-[200px] placeholder-gray-500"
+        placeholder="Post Content"
+      ></textarea>
+      @if (content.invalid && (content.dirty || content.touched)) {
+      <!--  -->
+      @if (content.hasError('required')) {
+      <span class="text-red-600">Content is required</span>
+      }}
+      <!--  -->
+      @if (content.hasError('maxlength')) {
+      <span class="text-red-600">Content must not exceed 2000 characters</span>
+      }
+    </div>
+
+    <div class="mt-4">
+      <button
+        [disabled]="formPost.invalid === true"
+        type="submit"
+        class="px-4 py-2 rounded bg-indigo-500 text-white cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Publish
+      </button>
+    </div>
+  </form>
+</div>
