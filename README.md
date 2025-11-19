@@ -24,6 +24,23 @@ export const environment = {
 
 ```
 
+# Login firebase
+
+```bash
+npm install -g firebase-tools
+```
+
+```bash
+firebase login
+```
+
+## Select tools from angular fire
+
+```bash
+auth
+storage
+```
+
 # DevPulse
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.5.
@@ -34,6 +51,12 @@ To start a local development server, run:
 
 ```bash
 ng serve
+```
+
+To start a local development mode server, run:
+
+```bash
+ng serve --configuration development
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
