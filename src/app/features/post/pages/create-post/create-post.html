@@ -28,11 +28,19 @@
 
     <div class="mt-4">
       <label for="content" class="w-full">Content</label>
-      <textarea
-        formControlName="content"
-        class="bg-neutral-100 w-full px-4 py-2 mt-2 h-[200px] placeholder-gray-500"
-        placeholder="Post Content"
-      ></textarea>
+
+      <div class="flex gap-4">
+        <textarea
+          formControlName="content"
+          class="bg-neutral-100 w-full px-4 py-2 mt-2 h-[200px] placeholder-gray-500"
+          placeholder="Post Content"
+        ></textarea>
+        <!-- MarkDown -->
+        <div class="bg-neutral-100 w-full px-4 py-2 mt-2 h-[200px] placeholder-gray-500">
+          <markdown [data]="contentData()" class="blog-content"> </markdown>
+        </div>
+      </div>
+
       @if (content.invalid && (content.dirty || content.touched)) {
       <!--  -->
       @if (content.hasError('required')) {

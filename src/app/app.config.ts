@@ -3,6 +3,7 @@ import {
   provideBrowserGlobalErrorListeners,
   provideZoneChangeDetection,
 } from '@angular/core';
+import { provideMarkdown } from 'ngx-markdown';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -23,5 +24,6 @@ export const appConfig: ApplicationConfig = {
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+    provideMarkdown(),
   ],
 };

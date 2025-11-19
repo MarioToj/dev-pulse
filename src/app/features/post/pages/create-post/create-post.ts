@@ -1,14 +1,18 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BlogPostService } from '../../services/blog-post.service';
+import { MarkdownModule } from 'ngx-markdown';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-create-post',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MarkdownModule],
   templateUrl: './create-post.html',
 })
 export class CreatePost {
   blogPostService = inject(BlogPostService);
+
+  contentData = signal('');
 
   fb = inject(FormBuilder);
 
@@ -24,6 +28,14 @@ export class CreatePost {
   get content() {
     return this.formPost.controls['content'];
   }
+
+  constructor() {
+    this.formPost
+      .get('content')
+      ?.valueChanges.pipe(tap((value) => this.contentData.set(value)))
+      .subscribe();
+  }
+
   // Create a blog post
   onFormSubmit() {
     if (this.formPost.invalid) return;
