@@ -1,2 +1,6 @@
 <app-nav-bar />
+@if(modeDevelopment === false) {
+<p class="w-full bg-black text-white text-center">This is a non production environment</p>
+
+}
 <router-outlet />

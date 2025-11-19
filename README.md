@@ -1,3 +1,29 @@
+# Generates Environments
+
+```bash
+ng generate environments
+```
+
+## Edit Variables inside of environments files
+
+```
+export const environment = {
+  // dependen of development or production in this example is for development
+  prod: false,
+  //Firebase Object config
+  firebase: {
+    apiKey: '',
+    authDomain: '',
+    projectId: '',
+    storageBucket: '',
+    messagingSenderId: '',
+    appId: '',
+    measurementId: '',
+  },
+};
+
+```
+
 # DevPulse
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.5.

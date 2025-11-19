@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BlogPostService } from '../../services/blog-post.service';
 
 @Component({
   selector: 'app-create-post',
@@ -7,6 +8,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './create-post.html',
 })
 export class CreatePost {
+  blogPostService = inject(BlogPostService);
+
   fb = inject(FormBuilder);
 
   formPost: FormGroup = this.fb.group({
@@ -21,8 +24,10 @@ export class CreatePost {
   get content() {
     return this.formPost.controls['content'];
   }
-
+  // Create a blog post
   onFormSubmit() {
-    console.log(this.formPost.value);
+    if (this.formPost.invalid) return;
+
+    this.blogPostService.createPost(this.title.value, this.content.value);
   }
 }

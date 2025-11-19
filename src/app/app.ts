@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavBar } from './core/components/nav-bar/nav-bar';
+import { environment } from '../environments/environment.development';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,5 @@ import { NavBar } from './core/components/nav-bar/nav-bar';
   styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('dev-pulse');
+  modeDevelopment = environment.prod;
 }
