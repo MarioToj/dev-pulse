@@ -53,6 +53,18 @@
     </div>
 
     <div class="mt-4">
+      <input
+        type="file"
+        class="hidden"
+        (change)="onCoverImageSelected(coverImageFileInput)"
+        #coverImageFileInput
+      />
+      <button (click)="coverImageFileInput.click()" class="border rounded px-4 py-2">
+        Add Cover Image
+      </button>
+    </div>
+
+    <div class="mt-4">
       <button
         [disabled]="formPost.invalid === true"
         type="submit"
