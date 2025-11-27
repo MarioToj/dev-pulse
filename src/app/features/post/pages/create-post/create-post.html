@@ -62,7 +62,16 @@
       <button (click)="coverImageFileInput.click()" class="border rounded px-4 py-2">
         Add Cover Image
       </button>
+      @if (imageMessage() !== undefined) {
+      <span class="text-cyan-600 ml-3">{{ imageMessage() }}</span>
+      }
     </div>
+    @if (coverImgUrl.value) {
+    <div class="mt-4">
+      <img [src]="coverImgUrl.value" alt="cover img" class="w-[200px]" />
+    </div>
+    }
+    <!--  -->
 
     <div class="mt-4">
       <button

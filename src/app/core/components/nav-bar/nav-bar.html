@@ -1,13 +1,13 @@
 <div class="max-w-7x1 mx-auto">
-  <div class="p-4 flex">
+  <div class="p-4 flex justify-between">
     <a routerLink="/">
       <img class="w-[150px]" src="assets/images/logo.png" alt="logo image" />
     </a>
 
-    <div class="ms-auto flex items-center">
-      <a class="bg-indigo-500 text-white px-4 py-2 rounded" routerLink="/create-post">
-        Create Post
-      </a>
-    </div>
+    @if (userService.isLoggedIn()) {
+    <app-logged-in-functionality />
+    } @else {
+    <app-logged-out-functionality />
+    }
   </div>
 </div>
